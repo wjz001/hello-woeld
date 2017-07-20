@@ -11,6 +11,7 @@
             color:rebeccapurple;
         }
     </style>
+    <script src="list.js"></script>
 </head>
 <body>
 <div id="d1">
@@ -19,7 +20,7 @@
 <div id="d2" align="center">
     <h1 align="left">注册新用户</h1>
         <a href="first.html"> <h4 align="right">首页</h4></a>
-    <hr><div><img src="register.png" align="right"></div>
+    <hr><div><img src="img/register.png" align="right"></div>
 <form action="login.html">
     登录账号：<input id="un" type="text"></br></br></br>
     登录密码：<input id="pwd1" type="password"></br></br></br>
@@ -34,17 +35,6 @@
 </form>
 
 </div>
-<script>
-    function register(){
-        var a11=document.getElementById("pwd1").value;
-        var a12=document.getElementById("pwd2").value;
-        if(a11==a12 && a11!=""){
-            return true;
-        }else{
-            alert("两次输入的密码不一样！")
-            return false;
-        }
-    }
-</script>
+
 </body>
 </html>
