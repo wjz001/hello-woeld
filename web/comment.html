@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <script>
+        $(document).ready(function () {
+            $("#t11").click(function () {
+                $("t1").innerHTML=document.getElementById("t1").value;
+            })
+        })
+    </script>
+    <script>
+        function showImage() {
+            var path=document.getElementById("xx").value;
+
+            document.getElementById("x").src=path;
+
+        }
+
+    </script>
+</head>
+<body>
+<h4>欢迎你</h4><hr>
+
+<div>
+    <div>
+        <img id="x" src="f2.jpg"  style="width: 200px; height: 350px;" >
+        <input id="xx" type="file"  name="file"  onChange="showImage()">
+
+
+    </div>
+    登录用户名：<input type="text" id="t1" value="wjz"/>
+    <input type="button" value="修改" id="t11">
+    </br></br></br>
+    登 录 密 码  ：<input type="password" id="t3" value="123455"/>
+    <input type="button" value="修改" id="t31"></br></br></br>
+    手 机号 码：  <input type="text" id="t2" value="15638198846"/>
+    <input type="button" value="修改" id="t21">
+
+</div>
+</body>
+</html>

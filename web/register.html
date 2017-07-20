@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        #d1 {
+            color:red;
+        }
+        #d2{
+            color:rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+<div id="d1">
+    <p align="center" bgcolor="#adff2f">asiainfo</p>
+</div>
+<div id="d2" align="center">
+    <h1 align="left">注册新用户</h1>
+        <a href="first.html"> <h4 align="right">首页</h4></a>
+    <hr><div><img src="register.png" align="right"></div>
+<form action="login.html">
+    登录账号：<input id="un" type="text"></br></br></br>
+    登录密码：<input id="pwd1" type="password"></br></br></br>
+    确认密码：<input id="pwd2"  type="password"></br></br></br>
+    手机号码：<input id="sj" tpye="text"></br></br></br>
+    <select>性别
+    <option>男</option>
+    <option>女</option>
+    </select>
+    <input type="submit" value="register"onclick=" return register()">
+    <p>点击 “register” 按钮，即表示您同意并愿意遵守 用户协议。</p>
+</form>
+
+</div>
+<script>
+    function register(){
+        var a11=document.getElementById("pwd1").value;
+        var a12=document.getElementById("pwd2").value;
+        if(a11==a12 && a11!=""){
+            return true;
+        }else{
+            alert("两次输入的密码不一样！")
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

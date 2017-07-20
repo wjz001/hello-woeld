@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录成功</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#sc").click(function() {
+                $("#www").hide();
+            })
+        })
+        $(document).ready(function () {
+            $("#hh").click(function(){
+                var a=document.getElementById("hh1").value;
+              $("#www").after("我对敏哥说: "  + a);
+
+            })
+        })
+    </script>
+</head>
+<body bgcolor="#7fffd4">
+<script src="login.js">
+     document.write(n);
+</script>
+<h1 >welcome to BBS</h1>
+<div>
+
+   <div align="right">
+       <a href="first.html">首页</a>
+       <a href="comment.html">我的信息</a>
+       <a href="login.html">退出登录</a><hr>
+   </div>
+</div>
+<div>
+    <h4>热帖榜</h4>
+    <div id="d2">
+        <ul>
+            <a href="http://zz.java.tedu.cn/baidu/java1/?baiduzzjava-A1-133-00001-pc"><li>java教程</li></a>
+            <a href="http://www.w3school.com.cn/js/index.asp"><li>javascript教程</li></a>
+            <a href="http://www.cnblogs.com/oxgen/p/7189854.html"><li>Android实现模拟表单上传</li></a>
+            <a href="http://www.cnblogs.com/yulinfeng/p/7188609.html"><li>jvm垃圾回收</li></a>
+        </ul>
+    </div>
+    <div>
+        <h4>回复我的</h4>
+        <ol>
+            <p id="www" >敏哥对我说：你叫什么名字？<button  id="sc" type="submit">删除</button></p><br>
+            <input id="hh1" type="text">
+            <button id="hh" type="submit">回复</button>
+        </ol>
+    </div>
+</div>
+<div id="friend_link" align="">
+    友情链接：<a href="http://click.aliyun.com/m/994/" target="_blank"></a>
+    <a href="http://www.chinaz.com/" target="_blank">站长之家</a>
+    <a href="http://dev.yesky.com" target="_blank">天极网</a>
+    <a href="http://down.admin5.com" target="_blank">A5源码下载</a>
+    <a href="https://yq.aliyun.com/" target="_blank">阿里云栖社区</a>
+    <a href="http://www.cnblogs.com/mipengine/" target="_blank">百度MIP博客</a>
+    <a href="http://www.easemob.com" target="_blank">环信IM</a>
+    <a href="http://wetest.qq.com/?from=links_cnblogs" target="_blank">腾讯WeTest</a>
+</div>
+</body>
+</html>
