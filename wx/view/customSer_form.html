@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type"  content="multipart/form-data; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义服务</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+<style>
+.containerOut .containerInner {
+    margin-bottom: 0px ;
+}
+</style>
+
+<body>
+    <div class="containerOut">
+        <div class="headerBar"></div>
+        <div class="contentBox containerInner">
+            <div class="baseInfo">
+                <p class="title">更多服务</p>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;公司名称</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入处理公司名称">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;业务负责人</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入业务负责人姓名">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>&nbsp;联系电话</p>
+                    <input class="placeholderText companyName" type="text" placeholder="请输入业务负责人联系电话">
+                </div>
+                <div class="formItem">
+                    <p class="labTitle"><span class="isRequired">*</span>所属服务类型</p>
+                    <ul class="pinchZoom zoomList" id="changeType">
+                        <li class="checkedItem">消防批文</li>
+                        <li>施工劳务资质</li>
+                        <li>教育资质</li>
+                        <li>法律服务</li>
+                        <li>其它</li>
+                    </ul>
+                </div>
+                <div class="formItem">
+                    <p class="labTitle">服务内容简述</p>
+                    <textarea class="remarkText" name="" id="" cols="" rows="" placeholder="请简要说明订单备注"></textarea>
+                </div>
+            </div>
+            <div class="customInfo">
+                <p class="title">咨询方式</p>
+                <div class="formItem clearfix">
+                    <img src="../img/userIcon03.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                    </p>
+                </div>
+                <div class="formItem clearfix">
+                    <img src="../img/site.jpg" alt="" class="customIcon fl">
+                    <p class="customBox fl">
+                        <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                        <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                    </p>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="weui_btn weui_btn_primary nextBtn">提交</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js?v=1.1"></script>

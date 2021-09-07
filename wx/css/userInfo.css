@@ -1,0 +1,483 @@
+/* -----------合作商入口页面------------- */
+.partnerContainer {
+    padding: 1.25rem;
+}
+
+.partnerContainer .slogan {
+    font-size: 2rem;
+    color: #2D73EE;
+    text-align: center;
+    font-weight: 700;
+    margin: 60px  0rem 60px;
+}
+
+.partnerContainer .partner_bg {
+    margin-top: 15%;
+}
+
+.partnerContainer .partner_bg>img {
+    width: 100%;
+}
+
+.partnerContainer .partnerBtn .operateBtn {
+    width: 45%;
+    height: 3.5rem;
+    color: #2D73EE;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 3.5rem;
+    border-radius: 2rem;
+    border: 1px solid #2D73EE;
+}
+
+.partnerContainer .partnerBtn .loginBtn {
+    color: #fff;
+    background-color: #2D73EE;
+}
+
+/* -----------合作商注册页面------------- */
+.partnerRegist>.contentBox>.baseInfo>.formItem>.addText {
+    font-size: .75rem;
+    color: #999999;
+} 
+
+.receiveInfo .getCodeBtn {
+    height: 2.625rem;
+    width: 7.5rem;
+    padding: .375rem 0rem;
+    color: #fff;
+    background-color: #836FFF;
+    position:absolute;
+    right:0px;
+    bottom:18px;
+    border-radius:1.3125rem;
+}
+
+.containerInner>.regBtn {
+    margin-top: 2.8125rem;   
+    margin-bottom: 1.875rem;
+    background-color: #836FFF;
+}
+
+a.regBtn:active {
+    color: #fff !important;
+    background-color: #836FFF !important;
+}
+
+/* -----------合作商登录页面------------- */
+.partnerLogin {
+    padding: 0rem 1.25rem;
+}
+
+.partnerLogin>.title {
+    padding: 1.875rem 0rem 1.875rem 1rem;
+    font-size: 1.5rem;  
+    font-weight: 700;
+} 
+
+.partnerLogin .loginForm {
+    border-radius: .625rem;
+    border: 1px solid #e7e7e7;
+    background-color: #fff;
+    padding: 2.8125rem 1.25rem;
+    margin-bottom: 2.8125rem;
+}
+
+.partnerLogin .loginForm>.formItem {
+    padding-bottom: .5rem;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.partnerLogin .loginForm>.formItem>.itemTitle {
+    font-size: 1.125rem ;
+    padding-bottom: .375rem;
+}
+
+.partnerLogin>.loginBtn {
+    display: inline-block;
+    width: 100%;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    border-radius: 2rem;
+    border: 1px solid #836FFF;
+    background-color: #836FFF;
+}
+
+.partnerLogin>.loginForm .formItem .getCodeBtn {
+    height: 2.625rem;
+    width: 7.5rem;
+    padding: .375rem 0rem;
+    color: #fff;
+    background-color: #836FFF;
+    position:absolute;
+    right:0px;
+    bottom:8px;
+    border-radius:21px;
+}
+/* -----------合作商个人中心------------- */
+.partnerCenter .contentBox {
+    padding: 1.875rem 1.25rem;
+    margin-bottom: 5.625rem; 
+}
+
+.partnerCenter .contentBox>.component {
+    padding: 1.25rem 0rem;
+    border: 1px solid #e7e7e7;
+    margin-top: 1.875rem;
+    background-color: #fff;
+    border-radius: .375rem;
+}
+
+.partnerCenter .contentBox>.component>.title {
+    text-align: center;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.partnerCenter .contentBox>.component>.title>img {
+    width: 2rem;
+    vertical-align: middle;
+}
+
+.partnerCenter .contentBox>.component>.title>.text {
+    vertical-align: middle;
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding-left: .375rem;
+}
+
+.partnerCenter .component>.content>a {
+    width: 50%;
+    height: 5rem;
+    text-align: center;
+    padding-top: 1.25rem;
+}
+
+.partnerCenter .component>.content>a>.flagIcon {
+    display: block;
+    margin: 0 auto;
+    width: 2rem;
+    margin-bottom: .5rem;
+}
+
+.partnerCenter .component>.content>a>.other {
+    display: block;
+    margin-bottom: .375rem;
+}
+
+.partnerCenter .component>.content>a>.amount {
+    color: red;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.partnerCenter .component>.content>a>.text {
+    font-size: 16px;
+    color: #000000;
+}
+
+.partnerCenter .basic {
+    height: 7.5rem;
+    position: relative;
+    padding: 1.875rem 1.25rem;
+    background-color: #fff;
+}
+
+.partnerCenter .basic .personText {
+    margin-bottom: .5rem;
+    padding-top: 12px;
+}
+
+.partnerCenter .basic .personText>.name {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.partnerCenter .basic>.company {
+    vertical-align: middle;
+}
+
+.partnerCenter .basic>.company>img {
+    width: 1.875rem;
+    vertical-align: middle;
+}
+
+.partnerCenter .basic>.company>companyName {
+    vertical-align: middle;
+}
+
+.partnerCenter .basic .personIcon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    overflow: hidden;
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+}
+
+.partnerCenter .basic .personIcon>img {
+    width: 100%;
+    height: 100%;
+}
+
+.partnerCenter .order {
+    font-size: 0px;
+}
+
+.partnerCenter .order>.title,
+.partnerCenter .answer>.title {
+    font-size: 1.125rem;
+    padding-bottom: .5rem;
+} 
+
+.partnerCenter .order>.orderRecord,
+.partnerCenter .answer>.module {
+    width: 48%;
+    height: 6.25rem;
+    border: 1px solid #e7e7e7;
+    border-radius: .625rem;
+    padding-left: 1.25rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.partnerCenter .order>.orderRecord {
+    background-color: #fff;
+}
+
+.partnerCenter .order>.orderRecord>.amount {
+    padding-top: 1.25rem;
+}
+
+.partnerCenter .order>.orderRecord>.orderFlag {
+    width: 5rem;
+    vertical-align: middle;
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+}
+
+.partnerCenter .accountBox>.content>.addBtn {
+    text-align: center;
+    padding: 1.25rem 0rem;
+    line-height: 2.25rem;
+}
+
+.partnerCenter .accountBox>.content>.addBtn>.addIcon {
+    display: inline-block;
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.875rem;
+    border: 2px dashed #e7e7e7;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.partnerCenter .accountBox>.content>.userTable {
+    width: 100%;
+    text-align: center;
+    padding: 0rem 1.25rem;
+}
+
+.partnerCenter .accountBox>.content>.userTable>tbody>tr {
+    height: 5rem;
+    border-bottom: 1px solid #e7e7e7;
+} 
+
+.partnerCenter .accountBox>.content>.userTable>tbody>tr>td  {
+    vertical-align: middle;
+}
+
+.partnerCenter .accountBox>.content>.userTable>tbody>tr>td>.userIcon {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 1.875rem;
+    vertical-align: middle;
+}
+
+.partnerCenter .accountBox>.content>.userTable>tbody>tr>td>.deleteBtn {
+    font-size: 1.5rem;
+    text-align: right;
+    color: #999999;
+    cursor: pointer;
+}
+
+.partnerCenter .moreSer {
+    background: url('../img/person/moreSer_bg.png') no-repeat left center;
+    background-size: contain;   
+}
+
+.partnerCenter .moreSer>.toMore {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.partnerCenter .moreSer>.toMore>.text {
+    line-height: 2rem;
+}
+
+.partnerCenter .moreSer>.toMore>.text1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: right;
+    color: #000000;
+    line-height: 1.5rem;
+}
+
+.partnerCenter .moreSer>.toMore>.text2 {
+    color: #000000;
+}
+
+.containerOut .bottomBox {
+    border-top: 1px solid #e7e7e7;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 3.75rem;
+    line-height: 3.75rem;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.containerOut .bottomBox>a {
+    position: relative;
+    text-align: center;
+    padding: 0rem .75rem;
+}
+
+.containerOut .bottomBox>a>.icon {
+    position: absolute;
+    top: .75rem;
+    left: 50%;
+    margin-bottom: .375rem;
+    font-size: 1.125rem;
+    margin-left: -0.5625rem;
+}
+
+.containerOut .bottomBox>a>.answerIcon {
+    font-size: 2.625rem;
+    top: -1rem;
+    margin-left: -1.3125rem;
+}
+
+.containerOut .bottomBox>a>.text {
+    display: inline-block;
+    font-size: 1.125rem;
+    padding-top: .75rem;
+}
+
+/* -----------订单查询页面------------- */
+.ordRecordBox .topBox {
+    min-height: 7.5rem;
+    background-color: #fff;
+}
+
+.ordRecordBox .topBox .searchText {
+    padding: 1.875rem .75rem .375rem;
+
+}
+
+.ordRecordBox .topBox .searchText .input_text {
+    height: 3rem;
+    line-height: 3rem;
+}
+
+.ordRecordBox .topBox .searchText .searchBtn {
+    height: 2.625rem;
+}
+
+.ordRecordBox .topBox .searchSelect>.serType {
+    text-align: center;
+    line-height: 3.75rem;
+}
+
+.ordRecordBox .topBox>.serBox {
+    background-color: #fff;
+    border-top: .125rem solid #e7e7e7;
+    padding: .75rem 1.25rem;
+    display: none;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li {
+    height: 2.625rem;
+    line-height: 2.625rem;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li>.checkFlag {
+    padding-right: 1.25rem;
+    padding-top: .75rem;
+    font-size: 1.125rem;
+    display: none;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li.isShow  {  
+    color: #337AB7;
+}
+
+.ordRecordBox .topBox>.orderStateBox>ul>li.isShow .checkFlag{
+    display: block;
+}
+
+.ordRecordBox .topBox>.orderTimeBox {
+    text-align: center;
+}
+
+.ordRecordBox .topBox>.orderTimeBox>input {
+    text-align: center;
+    width: 40%;
+    padding-bottom: .75rem;
+    border-bottom: .0625rem solid #e7e7e7;
+}
+
+.ordRecordBox .mainBox {
+    height: 37.5rem;
+    background: url('../img/person/noRecord.png') center center no-repeat;
+    background-size: 30%;
+} 
+
+
+/* 添加子账号弹框 */
+#add_accountBox {
+    display: none;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid #e7e7e7;
+}
+
+.formItem .isRequired{
+    color: #CD0000;
+    margin-right: .25rem;
+}
+
+#add_accountBox .formItem {
+    height: 3rem;
+    line-height: 3rem;
+    padding: .5rem .75rem;
+} 
+
+#add_accountBox .formItem .labTitle {
+    margin-right: .375rem;
+}
+
+#add_accountBox .confirmBtn {
+    display: inline-block;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: #000000;
+    border-top: 2px solid #e7e7e7;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>露露星球</title>
+    <link rel="stylesheet" href="./css/weui.min.css">
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/regist.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/common.css?v=1.0">
+</head>
+
+<body>
+    <div class="containerOut">
+        <div id="usecarol-example-generic" class="carousel slide" data-ride="carousel">
+            <ol id="bannerIndex" class="carousel-indicators">
+                <!-- 轮播图索引 -->
+            </ol>
+            <div id="bannerBox" class="carousel-inner"  role="listbox" >
+                <img src="./img/index.jpeg" alt="" class="customIcon fc">
+
+                <!-- 轮播图图片 -->
+            </div>
+        </div>
+        <div class="contentBox serverList">
+            <ul id="listBox">
+                <!-- 服务列表 -->
+            </ul>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <div  class="carousel-inner" style="margin-bottom: 2px">
+                <caption style="font-size: 12px">最新消息</caption>
+            </div>
+            <thead>
+            <tr>
+            </thead>
+            <tbody id="newsTypeBox" style="width: 100%">
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
+
+<script src="./js/jQuery/jquery-3.4.0.js"></script>
+<script src="./lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script src="./lib/layer/layer.js"></script>
+<script src="./js/index.js?v=1.3"></script>
+<script>
+
+    $(function() {
+        // 获取轮播图/九宫格
+//        alert('// 获取轮播图/九宫格')
+        $.ajax({
+            url: baseUrl+'/sell/buyer/product/list',
+            type: 'get',
+            success: function(res){
+                // 遍历服务列表
+                //ht = ht + '<div><button οnclick=show("'+arr[i].name+'","'+ arr[i].age +'")>我是按钮'+i+'</button></div><br>'
+
+                for (let i = 0; i < res.data.length; i++) {
+
+        var loseTypeItem= '<tr style="" onclick=myclick('+res.data[i].productId+');' +
+                '>'+
+                '<td class="type w20">'+'<div style="text-align: center" class="item active">'+
+        '<img style="width: 60px;height: 60px;white-space: normal; border-radius: 50%" src="./img/header.jpeg" alt=""></div>'+
+        '<div style="text-align: center"><label style="text-align: center; font-size: 12px;">'+res.data[i].productName+'</label></div>'
+                +'<div style="text-align: center"><label style="font-size: 12px;color: #4cae4c">'+formatDate(res.data[i].createTime)+'</label></div>'+'</td>'+
+
+                '<td class="type w60" style="white-space: normal;vertical-align: middle;font-family: Malayalam MN;font-size: 14px">'+res.data[i].productDescription+'</td>'+
+                '<td class="amount w10" style="color: red;vertical-align: middle;";>'+"¥"+res.data[i].productPrice+'</td>'+
+                '</tr>'
+        $('#newsTypeBox').append(loseTypeItem)
+    }
+            }
+        })
+
+            $('#listBox').on('click','li>a',function(){
+            var loginData= JSON.parse(localStorage.getItem('loginData'));
+            var tokenFlag;
+            var requestData= {};
+            var that= this;
+            if(loginData == null) {
+                window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html?ids=1012'
+                return false;
+            }else {
+                tokenFlag= loginData.token;
+                requestData= {token:tokenFlag}
+                function toTarget() {
+                    var hrefRoot= $(that).attr('hrefs')
+                    window.location.href= 'http://judiaowang.cn/app'+hrefRoot
+                }
+                isLogin(requestData,toTarget)
+            }
+
+        })
+
+    })
+
+function myclick(a) {
+console.log(a)  ;                  window.location.href= './view/detail.html?productId='+a+''
+
+}
+function created() {
+    //如果url里有openid, 设置进cookie
+    var openid = null;
+    var getRequest = GetRequest();
+    if (getRequest.openid) {
+        openid = getRequest.openid;
+        console.log(openid)
+        if (typeof openid !== 'undefined') {
+            var exp = new Date();
+            exp.setTime(exp.getTime() + 3600 * 1000);//过期时间60分钟
+            document.cookie = 'openid=' + openid + ";expires=" + exp.toGMTString();
+        }
+
+    }
+//    获取openidhttp://127.0.0.1/view/detail.html?productId=3encodeURIComponent(config.sellUrl + '/#/')
+    if(getCookie('openid') == null) {
+        location.href = baseUrl+'/sell/wechat/authorize?returnUrl='+baseUrl;
+    }
+}
+console.log(getCookie('openid'))
+created();
+//获取页面请求路径中的参数
+function GetRequest() {
+    console.log("location.search"+location.search)
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+    function formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) ;
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        return MM + DD +" "+hh + mm;
+    }
+function getCookie(name) {
+    console.log("document.cookie"+document.cookie)
+    var arr;
+    var reg = new RegExp('(^| )' +name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+
+</script>

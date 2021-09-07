@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>露露星球</title>
+    <link rel="stylesheet" href="../css/regist.css">
+</head>
+<style>
+</style>
+<body>
+<div id="redblock"  >
+    <img id="productIcon" src="" >
+
+    <!-- 轮播图图片 -->
+</div>
+</body>
+</html>
+<script>
+
+    //获取页面请求路径中的参数
+    function GetRequest() {
+        console.log("location.search"+location.search)
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    var getRequest = GetRequest();
+    //    alert(getRequest.productIcon)
+    //    $("#productIcon").attr('src',getRequest.productIcon);
+    document.getElementById("productIcon").src = getRequest.productIcon
+    //    element.src = getRequest.productIcon;
+</script>
+<style>
+    /*body{*/
+
+    /*background-color: gray;*/
+    /*}*/
+
+    #redblock{
+        margin:0 20px;
+        text-align: center;
+        /*display: table-cell;*/
+        vertical-align: middle;
+        align-content: center;
+        /*width:400px;*/
+        /*height: 400px;*/
+        /*background-color: red;*/
+
+    }
+
+    img {
+        margin-top: 10%;
+        max-width: 80%;
+        max-height: 80%;
+    }
+</style>

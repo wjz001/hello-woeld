@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>露露星球</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../lib/layer/mobile/need/layer.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">  
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>  
+    <script src="../css/bootstrap-switch.min.js"></script>  
+</head>  
+<body>
+<div align="center">
+
+
+<div>
+    <img  style="width: 60% ; border-radius: 50%" align="center" id="image">
+
+</div>
+<div style="padding-top: 5rem">
+
+    订阅消息开关
+    <input type="checkbox"  checked id="checkbox" class="weui_cells_checkbox"/>
+
+
+</div>
+</div>
+</body>
+</html>
+
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js"></script>
+
+    <script>
+    $(function(){
+        var openid = null;
+        var getRequest = GetRequest();
+        if (getRequest.openid) {
+            openid = getRequest.openid;
+            console.log(openid)
+            if (typeof openid !== 'undefined') {
+                var exp = new Date();
+                exp.setTime(exp.getTime() + 3600 * 1000);//过期时间60分钟
+                document.cookie = 'openid=' + openid + ";expires=" + exp.toGMTString();
+            }
+
+        }
+        //获取openidhttp://127.0.0.1/view/detail.html?productId=3encodeURIComponent(config.sellUrl + '/#/')
+        if(getCookie('openid') == null) {
+            location.href = baseUrl+'/sell/wechat/authorize?returnUrl='+baseUrl+"/view/adviceMessage.html";
+        }
+        var checkboxStatus=null;
+        $.ajax({
+            url: baseUrl+'/sell/buyer/order/userAdvice',
+            type: 'POST',
+            data:{"openid":getCookie('openid')},
+            success: function(res){
+                console.log(res.data)
+                $("#image").attr('src',res.data.headimgurl);
+                if(res.data.is_frz==1){
+//                    alert(1)
+                    $("#checkbox").bootstrapSwitch('state',false,true);
+                    checkboxStatus=1
+                    return
+                }else {
+                    $("#checkbox").bootstrapSwitch('state',true)
+                    checkboxStatus=0
+                    return
+
+//                    alert(0)
+                }
+            }
+        })
+        /* 初始化控件 */
+        $("#checkbox").bootstrapSwitch({
+            onText : "打开",      // 设置ON文本  
+            offText : "关闭",    // 设置OFF文本  
+            onColor : "success",// 设置ON文本颜色     (info/success/warning/danger/primary)  
+            offColor : "info",  // 设置OFF文本颜色        (info/success/warning/danger/primary)  
+            size : "normal",    // 设置控件大小,从小到大  (mini/small/normal/large)  
+//            // 当开关状态改变时触发  
+            onSwitchChange : function(event, state) {
+                console.event
+                if (state == true) {
+                    $.ajax({
+                        url: baseUrl+'/sell/buyer/order/advice1',
+                        type: 'POST',
+                        data:{"openid":getCookie('openid')},
+                        success: function(res){
+                            layer.msg('已开启消息推送');
+                        }
+                    })
+                }
+                if (state == false) {
+                    $.ajax({
+                        url: baseUrl+'/sell/buyer/order/advice2',
+                        type: 'POST',
+//                        data:{"openid":openid},
+                        data:{"openid": getCookie('openid')},
+                        success: function(res){
+                            layer.msg('已关闭消息推送');
+                            checkboxStatus=0
+                        }
+                    })
+                }
+            }
+        });
+
+
+    })
+
+
+    //获取页面请求路径中的参数
+    function GetRequest() {
+        console.log("location.search"+location.search)
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+    function getCookie(name) {
+        var arr;
+        var reg = new RegExp('(^| )' +name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    </script>

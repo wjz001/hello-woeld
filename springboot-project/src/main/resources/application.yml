@@ -1,0 +1,66 @@
+spring:
+  datasource:
+#    druid:
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      username: root
+#      password: 123456
+#      url: jdbc:mysql://39.106.24.231:3306/sell?characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: lulu123456
+    url: jdbc:mysql://39.106.24.231:3306/sell?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+  jackson:
+    default-property-inclusion: non_null
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+    timeout: 30000
+server:
+  context-path: /sell
+
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+##  path: F://日志
+#  file: F://日志/sell.log
+#  level:
+#    com.imooc.LoggerTest: debug
+
+# 下面是微信相关的配置
+wechat:
+#  mpAppId: wxcdb7cc3db3801caa
+#  mpAppSecret: f600cb18f772a90cb954d9c2414d5bd7 #测试号appId,appSecret
+  #授权
+  mpAppId: wx8ea6fc446e2448ea
+  mpAppSecret: 470e1c82572b02fdb4de4cc518080025 #借用号appId,appSecret
+  #测试用
+#  openAppId: wxcdb7cc3db3801caa
+#  openAppSecret: f600cb18f772a90cb954d9c2414d5bd7
+  #开放平台测试号appId,appSecret
+#  openAppId: wx6ad144e54af67d87
+#  openAppId: wxcdb7cc3db3801caa
+#  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #借用帐号appId,appSecret
+#  openAppSecret: f600cb18f772a90cb954d9c2414d5bd7 #借用帐号appId,appSecret
+
+  openAppId: wx8ea6fc446e2448ea
+  openAppSecret: 470e1c82572b02fdb4de4cc518080025 #pro
+  mchId: 1611469774
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath: /Users/wangjz/cert/apiclient_cert.p12
+  notifyUrl: http://www.luluxingqiu.com/sell/pay/notify
+  templateId:
+    orderStatus: GoCullfix05R-rCibvoyI87ZUg50cyieKA5AyX7pPzo
+    orderPush: T_oNq8Mr5hQX86N53rL2Q4OwM6XupPjq4HQ4g7fhGz0
+
+projectUrl:
+  wechatMpAuthorize: http://www.luluxingqiu.com
+  wechatOpenAuthorize: http://www.luluxingqiu.com
+  sell: http://www.luluxingqiu.com

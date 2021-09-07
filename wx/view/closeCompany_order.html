@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注销代跑</title>
+    <link rel="stylesheet" href="../css/weui.min.css">
+    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../css/common.css?v=1.0">
+    <link rel="stylesheet" href="../css/index.css?v=1.0">
+</head>
+<body>
+    <div class="logoutContainer logoutOrderBox containerInner">
+        <div class="formItem partOther checkedServ">
+            <p class="title">已选择服务</p>
+            <div class="content clearfix" style="min-height:60px">
+
+            </div>
+        </div>
+        <div class="formItem fileList">
+            <p class="title">材料清单</p>
+            <div class="content">
+                <table class="fileTable">
+                    <tbody>
+                        <tr>
+                            <td class="fileName">1.营业执照正本</td>
+                            <td class="fileName">2.营业执照副本</td>
+                        </tr>
+                        <tr>
+                            <td class="fileName">3.公章</td>
+                            <td class="fileName">4.财务章</td>
+                        </tr>
+                        <tr>
+                            <td class="fileName">5.印章登记卡及备案章</td>
+                            <td class="fileName">6.法人实名账户及密码</td>
+                        </tr>
+                        <tr>
+                            <td class="fileName">7.法人身份证复印件</td>
+                            <td class="fileName">8.电子账套</td>
+                        </tr>
+                        <tr>
+                            <td class="fileName">9.金税盘及密码</td>
+                            <td class="fileName">10.发票领购本</td>
+                        </tr>
+                        <tr>
+                            <td class="fileName">11.已开和空白发票</td>
+                            <td class="fileName">12.法人U盾与股东U盾</td>
+                        </tr>
+                        <tr>
+                            <td class="fileName fl" style="line-height:1rem;width:100%;padding-top:1.125rem;">13.股东会决议(模板下载)</td>
+                            <td class="fileName" style="padding-left:0.5rem;">14.发票章</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="agreementText">
+            <input type="checkbox" checked class="checkeBtn">
+            <span class="tipText">我已阅读并接收</span>
+            <a href="javascript:void(0)" class="orderText">《用户下单须知》</a>    
+        </div>        
+    </div> 
+    <div class="paymentBox">
+        <span class="payInfo">
+            订单金额 : <span class="payAmount"></span>
+        </span>
+        <a href="javascript:void(0)" class="fr paymentBtn">微信支付</a>
+    </div>  
+</body>
+</html>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../js/index.js?v=1.0"></script>
+<script>
+    $(function(){
+        var orderId= sessionStorage.getItem('orderId');
+        var targetUrl= 'http://judiaowang.cn/app/view/closeCompany_form.html'
+        var orderData = JSON.parse(sessionStorage.getItem('closeFormMes')) ;
+        var checkItemList = orderData.checkItem;
+        var payAmount =0;
+        for (let i = 0; i < checkItemList.length; i++) {
+            var checkItemHtml = '<label class="optionAbout">'+
+                    '<p class="flag">'+
+                        '<img class="icon" src='+checkItemList[i].icon+' alt="">'+
+                        '<span class="text">'+checkItemList[i].title+'</span>'+
+                    '</p>'+
+                    '<p class="price">'+checkItemList[i].price+'</p>'+
+                    '<input class="selectBtn" checked disabled type="checkbox">'+
+                '</label>'
+            var price = parseInt(checkItemList[i].price.replace('￥',''));
+            payAmount += price;         
+            $('.checkedServ .content').append(checkItemHtml);
+            $('.checkedServ .content>label:even').addClass("left fl"); // 偶数添加类名; index索引从0开始,0算偶数
+            $('.checkedServ .content>label:odd').addClass("right fr"); // 奇数添加类名            
+        }
+        $('.payInfo .payAmount').text(payAmount+".00");
+        $('.paymentBtn').on('click',function(){
+            weChatPay(orderId,targetUrl)
+        })
+    })
+    
+</script>

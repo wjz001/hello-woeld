@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>前海地址续签</title>
+    <link rel="stylesheet" href="./css/weui.min.css">
+    <link rel="stylesheet" href="./css/regist.css">
+    <link rel="stylesheet" href="./css/common.css?v=1.0">
+    <link rel="stylesheet" href="./css/index.css?v=1.0">
+</head>
+<body>
+<div class="containerOut">
+    <div class="headerBar"></div>
+    <div class="contentBox containerInner">
+        <div class="baseInfo">
+            <p class="title">公司信息</p>
+            <div class="formItem">
+                <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
+                <input class="placeholderText companyName" type="text" placeholder="请输入公司名称">
+            </div>
+            <div class="formItem">
+                <p class="labTitle"><span class="isRequired">*</span>商密账号<span class="addText">(若没有商密账号,请联系客服)</span> </p>
+                <input class="placeholderText businessAccount" type="text" placeholder="请输入商密系统账号">
+            </div>
+            <div class="formItem">
+                <p class="labTitle"><span class="isRequired">*</span>商密密码</p>
+                <input class="placeholderText businessPassword" type="text" placeholder="请输入商密系统密码">
+            </div>
+            <div class="formItem upload_ID clearfix">
+                <p class="labTitle"><span class="isRequired">*</span>法人身份证</p>
+                <div class="picUp ID_img uploadBox fileBox fl">
+                    <input class="idImg uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                    <img src="" alt="" class="showImg">
+                    <p class="typeText">法人身份证正面<span class="requiredFlag">*</span></p>
+                </div>
+                <div class="picUp ID_img uploadBox fileBox fr">
+                    <input class="idImg uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                    <img src="" alt="" class="showImg">
+                    <p class="typeText">法人身份证反面<span class="requiredFlag">*</span></p>
+                </div>
+
+            </div>
+            <div class="formItem upload_ID upload_other clearfix">
+                <p class="labTitle"><span class="isRequired">*</span>其它材料证明</p>
+                <div class="picUp ID_img picOther1 other1_img fl uploadBox fileBox">
+                    <input class="idImg uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                    <img src="" alt="" class="showImg">
+                    <p class="typeText">营业执照复印件盖公章<span class="requiredFlag">*</span></p>
+                </div>
+                <div class="picUp ID_img picOther1 other1_img fr uploadBox fileBox">
+                    <input class="idImg uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                    <img src="" alt="" class="showImg">
+                    <p class="typeText">法人手持身份证正面照<span class="requiredFlag">*</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="partBox baseInfo">
+            <p class="title">股东证件</p>
+            <div class="formItem selectZoomBox">
+                <p class="labTitle"><span class="isRequired">*</span>股东身份</p>
+                <ul class="selectZoom selectTenant zoomList stockholderType" id="tenantBox">
+                    <li class="checkedItem">自然人</li>
+                    <li>法人</li>
+                </ul>
+            </div>
+            <div class="formItem naturePart">
+                <p class="labTitle"><span class="isRequired">*</span>姓名</p>
+                <input class="placeholderText stockholderName" type="text" placeholder="请输入股东姓名">
+            </div>
+            <div class="formItem legalPart" style="display:none">
+                <p class="labTitle"><span class="isRequired">*</span>公司名称</p>
+                <input class="placeholderText stockholderCompany" type="text" placeholder="请输入公司名称">
+            </div>
+            <div class="formItem naturePart upload_ID clearfix">
+                <p class="labTitle"><span class="isRequired">*</span>所需材料 <span class="text">(照片必须清晰整齐)</span> </p>
+                <div class="picUp ID_img fl uploadBox stockholderID_up fileBox">
+                    <input class="idImg uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                    <img src="" alt="" class="showImg">
+                    <p class="typeText">身份证正面<span class="requiredFlag">*</span></p>
+                </div>
+                <div class="picDown ID_img fr uploadBox stockholderID_down fileBox">
+                    <input class="idImg uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                    <img src="" alt="" class="showImg">
+                    <p class="typeText">身份证反面<span class="requiredFlag">*</span></p>
+                </div>
+            </div>
+            <div class="formItem legalPart upload_ID upload_other clearfix" style="display:none">
+                <p class="labTitle"><span class="isRequired">*</span>材料证明 <span class="text">(照片必须清晰整齐)</span> </p>
+                <div class="picUp ID_img picOther1 other1_img fl uploadBox stockholder_other fileBox">
+                    <input class="idImg uploadInput" type="file" onchange="uploadFile($(this),$(this).parent())">
+                    <img src="" alt="" class="showImg">
+                    <p class="typeText">营业执照复印件盖公章<span class="requiredFlag">*</span></p>
+                </div>
+            </div>
+            <!-- <button class="addPerson btn btn-default">确认添加</button> -->
+        </div>
+        <div class="downBox receiveInfo">
+            <p class="title">收货信息</p>
+            <div class="formItem">
+                <p class="labTitle"><span class="isRequired">*</span>联系人</p>
+                <input class="placeholderText receiverName" type="text" placeholder="请输入联系人">
+            </div>
+            <div class="formItem">
+                <p class="labTitle"><span class="isRequired">*</span>手机号码</p>
+                <input class="placeholderText receiverTel" type="text" placeholder="请输入手机号码">
+            </div>
+            <div class="formItem">
+                <p class="labTitle"><span class="isRequired">*</span>收货地址</p>
+                <input class="placeholderText receiverAdd" type="text" placeholder="请输入收货地址">
+            </div>
+        </div>
+        <div class="customInfo">
+            <p class="title">咨询方式</p>
+            <div class="formItem clearfix">
+                <img src="../img/userIcon03.jpg" alt="" class="customIcon fl">
+                <p class="customBox fl">
+                    <span class="title">聚雕网客服黄小姐</span><span class="addText">(对接客服)</span><br>
+                    <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13823590716</span>
+                </p>
+            </div>
+            <div class="formItem clearfix">
+                <img src="../img/site.jpg" alt="" class="customIcon fl">
+                <p class="customBox fl">
+                    <span class="title">商务经理张先生</span><span class="addText">(对接商务经理)</span><br>
+                    <span class="tel"><span class="glyphicon glyphicon-phone-alt telIcon"></span> 13310874521</span>
+                </p>
+            </div>
+        </div>
+        <div class="tipBox">
+            <p class="tipTitle">温馨提示</p><br>
+            <p class="tipText">1 可配合看场地,第一次收费800元，第二次1500元。</p>
+            <p class="tipText">2 聚雕网承诺在服务期间托管企业不会因地址问题被纳入前海住所托管负面清单，否则在7个工作日内无条件将托管企业移除前海住所托管负面清单，如无法解除该异常，公司在3个工作日全额退款。</p>
+        </div>
+    </div>
+</div>
+<div class="paymentBox">
+        <span class="payInfo">
+            订单金额 : <span class="RMB_flag">￥</span><span class="payAmount"></span>
+        </span>
+    <a href="javascript:void(0)" class="fr nextBtn paymentBtn">下一步</a>
+</div>
+</body>
+</html>
+<script src="../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../lib/layer/layer.js"></script>
+<script src="../js/index.js?v=1.1"></script>
+<script>
+    $(function(){
+        $('.baseInfo .zoomList').on('touchend','li',function(){
+            $(this).addClass('checkedItem').siblings('li').removeClass('checkedItem');
+            if($(this).text() == '法人'){
+                $('.baseInfo .legalPart').css('display','block');
+                $('.baseInfo .naturePart').css('display','none');
+            }else if($(this).text() == '自然人') {
+                $('.baseInfo .legalPart').css('display','none');
+                $('.baseInfo .naturePart').css('display','block');
+            }
+        })
+        var goodsId= '';
+        var orderAmount= '0';
+
+        function callback_list(res){
+            if(res.code == 0) {
+                $('.paymentBox .payAmount').text(res.data.goods[0].goods[0].marketPrice)
+                goodsId= res.data.goods[0].goods[0].id
+                orderAmount= res.data.goods[0].goods[0].marketPrice
+            }else if(res.code == 666) {
+                layer.msg(res.msg,function(){
+                    window.location.href= 'http://judiaowang.cn/app/view/partnerLogin.html';
+                    return false;
+                })
+            }else {
+                layer.msg(res.msg);
+            }
+        }
+        var url_list= baseUrl+'/api/seaRenew/list';
+        var type_list= 'post';
+        var parameters_list= {
+            busModId: "5",// 前海续签
+            cityId: JSON.parse(localStorage.getItem('loginData')).cityId,
+        }
+        getFormData(url_list,type_list,parameters_list,callback_list);
+
+        // 下单
+        $('.paymentBox .paymentBtn').on('touchend',function(){
+            var companyName= $('.baseInfo .formItem .companyName').val();
+            var businessAccount= $('.baseInfo .formItem .businessAccount').val();
+            var businessPassword= $('.baseInfo .formItem .businessPassword').val();
+            var ID_up= $('.baseInfo .upload_ID .picUp .showImg').attr('src');
+            var ID_down= $('.baseInfo .upload_ID .picDown .showImg').attr('src');
+            var other1_img= $('.baseInfo .upload_other .other1_img .showImg').attr('src');
+            var other2_img= $('.baseInfo .upload_other .other2_img .showImg').attr('src');
+
+            var receiverName= $('.receiveInfo .receiverName').val();
+            var receiverTel= $('.receiveInfo .receiverTel').val();
+            var receiverAdd= $('.receiveInfo .receiverAdd').val();
+
+            // 判断股东类型
+            if($('.baseInfo .stockholderType .checkedItem').text() == '自然人') {
+                var stockholderName= $('.partBox .formItem .stockholderName').val();
+                var stockholderID_up= $('.partBox .stockholderID_up .showImg').attr('src');
+                var stockholderID_down= $('.partBox .stockholderID_down .showImg').attr('src');
+                var orderInfo= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busModId": 5,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    "corpList": [
+                        {
+                            // "busLicense": "http://img.com",
+                            // "companyName": "深圳聚雕网科技有限公司",
+                            "idCardBack": stockholderID_down,
+                            "idCardFront": stockholderID_up,
+                            "identity": 1,
+                            "name": stockholderName
+                        }
+                    ],
+                    "goodsId": goodsId,
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel
+                };
+                var orderInfoData= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    'legalType': '自然人',
+                    "corpList": [
+                        {
+                            // "busLicense": "http://img.com",
+                            // "companyName": "深圳聚雕网科技有限公司",
+                            "idCardBack": stockholderID_down,
+                            "idCardFront": stockholderID_up,
+                            "name": stockholderName
+                        }
+                    ],
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel,
+                    'orderAmount': orderAmount
+                };
+
+            }else if($('.baseInfo .stockholderType .checkedItem').text() == '法人') {
+                var stockholderCompany= $('.partBox .formItem .stockholderCompany').val();
+                var stockholder_other= $('.partBox .stockholder_other .showImg').attr('src');
+                var orderInfo= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busModId": 5,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "cityId": JSON.parse(localStorage.getItem('loginData')).cityId,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    "corpList": [
+                        {
+                            "busLicense": stockholder_other,
+                            "companyName": stockholderCompany,
+                            // "idCardBack": stockholderID_down,
+                            // "idCardFront": stockholderID_up,
+                            "identity": 2,
+                            // "name": stockholderName
+                        }
+                    ],
+                    "goodsId": goodsId,
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel
+                };
+                var orderInfoData= {
+                    "address": receiverAdd,
+                    "busLicenseCopy": other1_img,
+                    "busSecretAcc": businessAccount,
+                    "busSecretPwd": businessPassword,
+                    "companyName": companyName,
+                    "consignee": receiverName,
+                    'legalType': '法人',
+                    "corpList": [
+                        {
+                            "busLicense": stockholder_other,
+                            "companyName": stockholderCompany,
+                            // "idCardBack": stockholderID_down,
+                            // "idCardFront": stockholderID_up,
+                            "identity": 2,
+                            // "name": stockholderName
+                        }
+                    ],
+                    "legalCardBack": ID_down,
+                    "legalCardFront": ID_up,
+                    "legalCardPhoto": other2_img,
+                    "phone": receiverTel,
+                    'orderAmount': orderAmount
+                };
+            }
+
+            var url_order= baseUrl+'/api/seaRenew/createOrder';
+            var type_order= 'post';
+            var targetUrl= 'http://judiaowang.cn/app/view/renewAdd_order.html';
+            // var targetUrl= './renewAdd_order.html';
+            orderInfo= JSON.stringify(orderInfo);
+            orderInfoData= JSON.stringify(orderInfoData);
+            sessionStorage.setItem('renewFormMes',orderInfoData);
+            createOrder(url_order,type_order,orderInfo,targetUrl);
+            window.location.href='./renewAdd_order.html'
+        })
+    })
+</script>
