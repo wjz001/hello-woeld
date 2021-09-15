@@ -21,6 +21,6 @@ public interface PushMessageService {
      */
     void orderPush(ProductInfo productInfo);
 
-    public  boolean judgeIsFollow(String openid);
+    public  boolean judgeIsFollow(String openid,String access_token);
     public  String getAccessTokes();
 }

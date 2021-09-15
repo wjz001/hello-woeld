@@ -144,6 +144,7 @@ public class SellerProductController {
                 form.setProductId(KeyUtil.genUniqueKey());
             }
             BeanUtils.copyProperties(form,productInfo);
+            productInfo.setProductStock(1);
             productInfo.setCreateTime(new Date());
             productInfo.setUpdateTime(new Date());
             productInfo= productService.save(productInfo);

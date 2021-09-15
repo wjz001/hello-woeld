@@ -85,8 +85,9 @@ public class PushMessageServiceImpl implements PushMessageService {
             List<UserInfo> list = userInfoService.finaAll();
             if (list != null) {
 //                for (int i=0;i< list.size();i++){
+               String access_token= getAccessTokes();
                 for (UserInfo user : list) {
-                    if (0 == (user.getIs_frz())&&judgeIsFollow(user.getOpenid())) {
+                    if (0 == (user.getIs_frz())&&judgeIsFollow(user.getOpenid(),access_token)) {
                         templateMessage.setToUser(user.getOpenid());//openid:"ozswp1Ojl2rA57ZK97ntGw2WQ2CA"
                         wxMpService.getTemplateMsgService().sendTemplateMsg(templateMessage);
                     }
@@ -135,8 +136,8 @@ public class PushMessageServiceImpl implements PushMessageService {
         return access_token;
     }
 
-    public  boolean judgeIsFollow(String openid){
-      String access_token=  getAccessTokes();
+    public  boolean judgeIsFollow(String openid,String access_token){
+//      String access_token=  getAccessTokes();
         Integer subscribe = 0;
         String url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token="+access_token+"&openid="+openid+"&lang=zh_CN";
         try {
