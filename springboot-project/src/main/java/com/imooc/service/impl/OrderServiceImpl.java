@@ -1,5 +1,6 @@
 package com.imooc.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.imooc.converter.OrderMaster2OrderDTOConverter;
 import com.imooc.dataobject.OrderDetail;
 import com.imooc.dataobject.OrderMaster;
@@ -29,6 +30,8 @@ import org.springframework.util.CollectionUtils;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -198,7 +201,14 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderDTO> findList(Pageable pageable) {
-        Page<OrderMaster> orderMasterPage=orderMasterRepository.findAll(pageable);
+        Date date = new Date();
+        Date dBefore = new Date();
+        Calendar calendar = Calendar.getInstance(); //得到日历
+        calendar.setTime(date);//把当前时间赋给日历
+        calendar.add(Calendar.DAY_OF_MONTH, -3);  //设置为前一天
+        dBefore = calendar.getTime();   //得到前一天的时
+        Page<OrderMaster> orderMasterPage=orderMasterRepository.findAlls(PayStatusEnum.SUCCESS.getCode(),dBefore,pageable);
+//        Page<OrderMaster> pageResult = new PageImpl<>(orderMasterPage);
 
         List<OrderDTO> orderDTOList=OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
 

@@ -19,8 +19,6 @@ public class ProductForm {
     /**单价**/
     private BigDecimal productPrice;
 
-    /**库存**/
-    private Integer productStock;
 
     /**描述**/
     private String productDescription;

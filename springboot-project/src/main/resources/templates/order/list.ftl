@@ -16,9 +16,9 @@
                         <thead>
                         <tr>
                             <th>订单id</th>
+                            <th>商品id</th>
                             <th>姓名</th>
-                            <th>手机号</th>
-                            <th>地址</th>
+                            <th>商品描述</th>
                             <th>金额</th>
                             <th>订单状态</th>
                             <th>支付状态</th>

@@ -64,7 +64,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
 
     public Page<ProductInfo> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+        Date date = new Date();
+        Date dBefore = new Date();
+        Calendar calendar = Calendar.getInstance(); //得到日历
+        calendar.setTime(date);//把当前时间赋给日历
+        calendar.add(Calendar.DAY_OF_MONTH, -3);  //设置为前一天
+        dBefore = calendar.getTime();   //得到前一天的时
+        return repository.findAlls(dBefore,pageable);
     }
 
     @Override

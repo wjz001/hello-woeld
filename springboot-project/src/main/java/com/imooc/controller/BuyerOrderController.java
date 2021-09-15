@@ -98,7 +98,7 @@ public class BuyerOrderController {
         orderMaster.setUpdateTime(new Date());
         orderMaster.setOrderStatus(1);
         orderMaster.setBuyerAddress(productInfo.getProductDescription());
-        orderMaster.setBuyerPhone(productInfo.getProductIcon());
+        orderMaster.setBuyerPhone(userInfo.getName());
         orderMasterRepository.save(orderMaster);
         return ResultVOUtil.success(orderMaster);
 
