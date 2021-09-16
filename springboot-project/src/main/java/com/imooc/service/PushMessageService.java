@@ -17,9 +17,14 @@ public interface PushMessageService {
     void orderStatus(OrderDTO orderDTO);
     /**
      * 订单发布消息
-     * @param ProductInfo
+     * @param productInfo
      */
     void orderPush(ProductInfo productInfo);
+    /**
+     * 订单发布消息
+     * @param productInfo
+     */
+    void orderPushOther(ProductInfo productInfo);
 
     public  boolean judgeIsFollow(String openid,String access_token);
     public  String getAccessTokes();

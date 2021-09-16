@@ -5,6 +5,7 @@ import com.imooc.config.WechatAccountConfig;
 import com.imooc.dataobject.ProductInfo;
 import com.imooc.dataobject.UserInfo;
 import com.imooc.dto.OrderDTO;
+import com.imooc.exception.SellException;
 import com.imooc.service.PushMessageService;
 import com.imooc.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -38,7 +40,8 @@ public class PushMessageServiceImpl implements PushMessageService {
 
     @Autowired
     private UserInfoService userInfoService;
-
+    @Autowired
+    private RestTemplate restTemplate;
     @Override
     public void orderStatus(OrderDTO orderDTO) {
 
@@ -99,9 +102,60 @@ public class PushMessageServiceImpl implements PushMessageService {
         } catch (WxErrorException e) {
             log.error("【微信模板消息】发送失败，{}", e);
         }
+        try {
+            doPostWith2(productInfo);
+        }catch (SellException e){
+            e.printStackTrace();
+        }
 
     }
+    /**
+     * 以post方式请求第三方http接口 postForEntity
+     * @param productInfo
+     * @return
+     */
+    public String doPostWith2(ProductInfo productInfo){
+        String body = restTemplate.postForObject("http://www.enxian.online/sell/seller/product/orderPush", productInfo, String.class);
+        return body;
+    }
+    @Override
+    public void orderPushOther(ProductInfo productInfo) {
+        WxMpTemplateMessage templateMessage = new WxMpTemplateMessage();
+        templateMessage.setTemplateId(accountConfig.getTemplateId().get("orderPush"));//模板id:"GoCullfix05R-rCibvoyI87ZUg50cyieKA5AyX7pPzo
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd :HH-mm-ss");    //格式化规则
+        Date date = productInfo.getCreateTime();         //获得你要处理的时间 Date型
+        String datetime = sdf.format(date); //格式化成yyyy-MM-dd格式的时间字符串
 
+//        templateMessage.setToUser(resultVO.getBuyerOpenid());//openid:"ozswp1Ojl2rA57ZK97ntGw2WQ2CA"
+        List<WxMpTemplateData> data = Arrays.asList(
+                new WxMpTemplateData("first", "你好，订阅的资讯已送达"),
+                new WxMpTemplateData("Date", datetime),
+                new WxMpTemplateData("Source", productInfo.getProductName(), "#ff0000"),
+                new WxMpTemplateData("Description", productInfo.getProductDescription(), "#0000ff"),
+                new WxMpTemplateData("remark","如被打扰，请点击订阅取消推送")
+        );
+        templateMessage.setData(data);
+        templateMessage.setUrl("http://www.enxian.online/view/detail.html?productId=" + productInfo.getProductId());
+        try {
+            List<UserInfo> list = userInfoService.finaAll();
+            if (list != null) {
+//                for (int i=0;i< list.size();i++){
+                String access_token= getAccessTokes();
+                for (UserInfo user : list) {
+                    if (0 == (user.getIs_frz())&&judgeIsFollow(user.getOpenid(),access_token)) {
+                        templateMessage.setToUser(user.getOpenid());//openid:"ozswp1Ojl2rA57ZK97ntGw2WQ2CA"
+                        wxMpService.getTemplateMsgService().sendTemplateMsg(templateMessage);
+                    }
+                }
+                log.error("【微信模板消息】发送成功，{}");
+
+//                }
+            }
+        } catch (WxErrorException e) {
+            log.error("【微信模板消息】发送失败，{}", e);
+        }
+
+    }
     public  String getAccessTokes() {
         String access_token = "";
         String grant_type = "client_credential";// 获取access_token填写client_credential

@@ -11,6 +11,8 @@ import com.imooc.service.PushMessageService;
 import com.imooc.utils.KeyUtil;
 import com.lly835.bestpay.rest.type.Post;
 import freemarker.template.utility.StringUtil;
+import org.apache.http.HttpConnection;
+import org.apache.http.protocol.HTTP;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -157,4 +159,21 @@ public class SellerProductController {
         map.put("url","/sell/seller/product/list");
         return new ModelAndView("common/success",map);
     }
+    /**
+     * 订单消息推送
+     * @param productInfo
+     * @param productInfo
+     * @return
+     */
+    @PostMapping("/orderPush")
+    public Boolean orderPush(@Valid ProductInfo productInfo){
+            try{
+            pushMessageService.orderPushOther(productInfo);
+        }catch (SellException e){
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+    }
+
 }
