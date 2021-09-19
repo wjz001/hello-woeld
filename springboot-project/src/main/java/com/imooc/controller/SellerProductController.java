@@ -136,7 +136,16 @@ public class SellerProductController {
             map.put("url","sell/seller/product/index");
             return new ModelAndView("common/error",map);
         }
-
+        try {
+            ProductInfo productInfo = productService.findOneIcon(form.getProductIcon());
+            if (productInfo != null) {
+                map.put("msg", "不能重复提交");
+                map.put("url", "/sell/seller/product/index");
+                return new ModelAndView("common/error", map);
+            }
+        } catch (SellException e) {
+            e.printStackTrace();
+        }
         ProductInfo productInfo=new ProductInfo();
         try{
             //如果productId不为空，说明是已有商品

@@ -18,4 +18,6 @@ public interface ProductInfoRepository extends JpaRepository<ProductInfo,String>
 
     @Query(value = "select  * from product_info where create_time>?1 ORDER BY ?#{#pageable}",nativeQuery = true)
     Page<ProductInfo> findAlls(Date date, Pageable pageable);
+
+    ProductInfo findByProductIcon(String productIcon);
 }

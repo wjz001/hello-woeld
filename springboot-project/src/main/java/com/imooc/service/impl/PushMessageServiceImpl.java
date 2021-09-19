@@ -103,7 +103,7 @@ public class PushMessageServiceImpl implements PushMessageService {
             log.error("【微信模板消息】发送失败，{}", e);
         }
         try {
-            doPostWith2(productInfo);
+//            doPostWith2(productInfo);
         }catch (SellException e){
             e.printStackTrace();
         }

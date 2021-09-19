@@ -38,6 +38,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductInfo findOneIcon(String productIcon) {
+        return repository.findByProductIcon(productIcon);
+    }
+
+    @Override
     @CachePut(key = "1234")
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
