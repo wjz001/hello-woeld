@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color:beige;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>露露星球</title>
-    <link rel="stylesheet" href="../css/regist.css">
+    <link rel="stylesheet" href="../../css/regist.css">
 </head>
 <style>
 </style>
@@ -15,11 +15,52 @@
 
     <!-- 轮播图图片 -->
 </div>
+<div class="tipBox" style="  margin-left: 10px;;margin-right: 10px">
+    <!--<p class="tipTitle">活动规则</p><br>-->
+    <!--<p class="tipText">请把以下清单文件邮寄到聚雕网：</p>-->
+    <p class="tipText" style="color: red">1、保存此二维码分享给好友赚取佣金！
+    </p>
+    <p class="tipText" style="color: red">2、邀请好友进入平台，好友消费即可享受最高百分之65佣金！
+    </p>
+    <p class="tipText" style="color: red">3、好友消费分佣说明：
+        有效人数>5人（45%）！有效人数>18人（55%）！有效人数>28人（65%）！
+    </p>
+    <!--<p class="tipText"style="color: red">2、</p>-->
+    <!--<p class="tipText">5、法人个人银行U盾、密码。</p>-->
+    <!--<p class="tipText">办理时间：收到资料后10个工作日左右。</p>-->
+</div>
 </body>
 </html>
-<script>
 
-    //获取页面请求路径中的参数
+<script src="../../js/jQuery/jquery-3.4.0.js"></script>
+<script src="../../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../../lib/mobileSelect/mobileSelect.js"></script>
+<script src="../../lib/mobileSelect/selectDate.js"></script>
+<script src="../../lib/layer/layer.js"></script>
+<script src="../../js/index.js"></script>
+<script>
+    $(function() {
+        $.ajax({
+            url: baseUrl + '/sell/attention/weixinAttention',
+            type: 'POST',
+            data: {"body": getCookie('openid')},
+            success: function (res) {
+                console.log(res)
+                document.getElementById("productIcon").src = res
+
+            }
+        })
+
+        //    element.src = getRequest.productIcon;
+    })
+    function getCookie(name) {
+        var arr;
+        var reg = new RegExp('(^| )' +name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
     function GetRequest() {
         console.log("location.search"+location.search)
         var url = location.search; //获取url中"?"符后的字串
@@ -33,11 +74,6 @@
         }
         return theRequest;
     }
-    var getRequest = GetRequest();
-    //    alert(getRequest.productIcon)
-    //    $("#productIcon").attr('src',getRequest.productIcon);
-    document.getElementById("productIcon").src = getRequest.productIcon
-    //    element.src = getRequest.productIcon;
 </script>
 <style>
     /*body{*/

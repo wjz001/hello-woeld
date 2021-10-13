@@ -40,5 +40,8 @@ public class UserInfo implements Serializable {
     /**性别 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知**/
     private Integer sex;
     private Integer is_frz;//0 开启 1 关闭
+    private String partnerId;
+    private Integer subscribe;
+    private Date email_verified_at;
 
 }

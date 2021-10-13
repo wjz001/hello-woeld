@@ -75,8 +75,8 @@ public class WechatController {
 
         log.info("【微信网页授权】获取openid,returnUrl={}",returnUrl);
         try {
-            UserInfo userInfo1=userInfoService.findUserInfoByOpenid(openId);
-            if(userInfo1==null) {
+            UserInfo userInfo=userInfoService.findUserInfoByOpenid(openId);
+            if(userInfo==null) {
                 //第四步(获取用户接口)
                 String infoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=" + wxMpOAuth2AccessToken.getAccessToken()
                         + "&openid=" + openId
@@ -87,7 +87,30 @@ public class WechatController {
                 String userInfoMsg = new String(userInfoStr.getBytes("ISO-8859-1"), "UTF-8");
 
                 JSONObject userInfoMap = JSON.parseObject(userInfoMsg);
-                UserInfo userInfo=new UserInfo();
+                userInfo=new UserInfo();
+                userInfo.setOpenid(openId);
+                userInfo.setEmail("123");
+                userInfo.setName(userInfoMap.getString("nickname"));
+                userInfo.setSex(userInfoMap.getInteger("sex"));
+                userInfo.setPassword("123");
+                userInfo.setHeadimgurl(userInfoMap.getString("headimgurl"));
+                userInfo.setSex(userInfoMap.getInteger("sex"));
+                userInfo.setIs_frz(0);
+
+                userInfoService.create(userInfo);
+                System.out.println(" 微信获取到的用户信息为userInfo------:" + userInfoMap.toString());
+            }
+            if((userInfo!=null&&"123456".equals(userInfo.getEmail()))){
+                //第四步(获取用户接口)
+                String infoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=" + wxMpOAuth2AccessToken.getAccessToken()
+                        + "&openid=" + openId
+                        + "&lang=zh_CN";
+                RestTemplate restTemplate = new RestTemplate();
+                ResponseEntity<String> userInfoEntity = restTemplate.getForEntity(infoUrl, String.class); // 乱码
+                String userInfoStr = userInfoEntity.getBody();
+                String userInfoMsg = new String(userInfoStr.getBytes("ISO-8859-1"), "UTF-8");
+
+                JSONObject userInfoMap = JSON.parseObject(userInfoMsg);
                 userInfo.setOpenid(openId);
                 userInfo.setEmail("123");
                 userInfo.setName(userInfoMap.getString("nickname"));

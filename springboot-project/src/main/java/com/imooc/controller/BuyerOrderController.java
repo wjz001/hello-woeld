@@ -87,6 +87,7 @@ public class BuyerOrderController {
             log.error("【查询订单列表】productId为空");
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
+        Date date=new Date();
         UserInfo userInfo = userInfoService.findUserInfoByOpenid(openid);
         ProductInfo productInfo = productService.findOne(productId);
         OrderMaster orderMaster = new OrderMaster();
@@ -94,8 +95,8 @@ public class BuyerOrderController {
         orderMaster.setBuyerName(productInfo.getProductId());
         orderMaster.setOrderAmount(productInfo.getProductPrice());
         orderMaster.setPayStatus(0);
-        orderMaster.setCreateTime(new Date());
-        orderMaster.setUpdateTime(new Date());
+        orderMaster.setCreateTime(date);
+        orderMaster.setUpdateTime(date);
         orderMaster.setOrderStatus(1);
         orderMaster.setBuyerAddress(productInfo.getProductDescription());
         orderMaster.setBuyerPhone(userInfo.getName());
