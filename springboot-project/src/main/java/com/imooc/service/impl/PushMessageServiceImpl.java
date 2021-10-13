@@ -83,7 +83,7 @@ public class PushMessageServiceImpl implements PushMessageService {
                 new WxMpTemplateData("remark","如被打扰，请点击订阅取消推送")
         );
         templateMessage.setData(data);
-        templateMessage.setUrl("http://www.luluxingqiu.com/view/detail.html?productId=" + productInfo.getProductId());
+        templateMessage.setUrl("http://www.luluxingqiu.com/app/view/detail.html?productId=" + productInfo.getProductId());
         try {
             List<UserInfo> list = userInfoService.finaAll();
             if (list != null) {
