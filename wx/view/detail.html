@@ -103,7 +103,7 @@
 //        }
 //    获取openidhttp://127.0.0.1/view/detail.html?productId=3encodeURIComponent(config.sellUrl + '/#/')
         if(getCookie('openid') == null) {
-            location.href = baseUrl+'/sell/wechat/authorize?returnUrl='+baseUrl+"/view/detail.html";
+            location.href = baseUrl+'/sell/wechat/authorize?returnUrl='+baseUrlView+"/view/detail.html";
         }
     }
     created();
@@ -183,7 +183,7 @@
             if($('#productPrice').text()<0.1){
                 console.log("---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 console.log($('#productPrice').text())
-                location.href=baseUrl+'/view/details.html?productIcon='+productIcon;
+                location.href=baseUrlView+'/view/details.html?productIcon='+productIcon;
             }
                 const ERR_OK = 0;
                $.ajax({
@@ -202,7 +202,7 @@
                                    $.ajax({
                                        url: baseUrl+'/sell/pay/create',
                                        type: 'POST',
-                                       data:{"orderId":orderId,"openid": getCookie('openid'),"returnUrl":baseUrl+'/view/details.html'},
+                                       data:{"orderId":orderId,"openid": getCookie('openid'),"returnUrl":baseUrlView+'/view/details.html'},
                                        dataType:"json",
 //                            contentType:"application/json",
                                        success: function(res){
@@ -229,7 +229,7 @@
                                                                    success: function(res){
                                                                    }
                                                                })
-                                                               location.href=baseUrl+'/view/details.html?productIcon='+productIcon;
+                                                               location.href=baseUrlView+'/view/details.html?productIcon='+productIcon;
                                                            }else if(res.err_msg == "get_brand_wcpay_request:cancel") {
                                                                $('.paymentBox .paymentBtn').removeAttr("disabled");
 //                                                   alert('支付过程中用户取消！');
@@ -260,7 +260,7 @@
                                        }
                                    })
                                }else {
-                                   location.href=baseUrl+'/view/details.html?productIcon='+productIcon;
+                                   location.href=baseUrlView+'/view/details.html?productIcon='+productIcon;
 
                                }
                            }

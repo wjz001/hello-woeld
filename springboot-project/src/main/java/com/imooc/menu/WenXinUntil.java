@@ -15,17 +15,17 @@ public class WenXinUntil {
         ViewButton button11 = new ViewButton();
         button11.setName("星球通道");
         button11.setType("view");
-        button11.setUrl("http://www.luluxingqiu.com");
+        button11.setUrl("http://www.luluxingqiu.com/app");
 
         ViewButton button21 = new ViewButton();
         button21.setName("订阅");
         button21.setType("view");
-        button21.setUrl("http://www.luluxingqiu.com/view/adviceMessage.html");//我这里测试使用百度网站
+        button21.setUrl("http://www.luluxingqiu.com/app/view/adviceMessage.html");//我这里测试使用百度网站
 
         ViewButton button31 = new ViewButton();
         button31.setName("加入我们");
         button31.setType("view");
-        button31.setUrl("http://www.luluxingqiu.com/view/order/attention.html");
+        button31.setUrl("http://www.luluxingqiu.com/app/view/order/attention.html");
 
 //        ClickButton button32 = new ClickButton();
 //        button32.setName("地理位置");

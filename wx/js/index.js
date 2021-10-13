@@ -1,7 +1,9 @@
 // var baseUrl= 'http://judiaowang.cn/platform';
 // var baseUrl= 'http://39.106.24.231';
 // var baseUrl= 'http://127.0.0.1';
+// var baseUrlView= 'http://127.0.0.1/app';
 var baseUrl= 'http://www.luluxingqiu.com';
+var baseUrlView= 'http://www.luluxingqiu.com/app';
 var pageUrl= 'http://judiaowang.cn/app/view';
 var test1= 'http://desom.mynatapp.cc/platform';
 
