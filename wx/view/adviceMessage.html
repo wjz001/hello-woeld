@@ -53,7 +53,7 @@
         }
         //获取openidhttp://127.0.0.1/view/detail.html?productId=3encodeURIComponent(config.sellUrl + '/#/')
         if(getCookie('openid') == null) {
-            location.href = baseUrl+'/sell/wechat/authorize?returnUrl='+baseUrl+"/view/adviceMessage.html";
+            location.href = baseUrl+'/sell/wechat/authorize?returnUrl='+baseUrlView+"/view/adviceMessage.html";
         }
         var checkboxStatus=null;
         $.ajax({
